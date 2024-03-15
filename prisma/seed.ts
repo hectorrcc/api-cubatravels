@@ -27,11 +27,11 @@ async function main() {
     ],
   });
   const projects = await prismaClient.project.createMany({data:[
-    {name: "Project 1", description:"Project 1", },
-    {name: "Project 2", description:"Project 2", },
-    {name: "Project 3", description:"Project 3", },
-    {name: "Project 4", description:"Project 4", },
-    {name: "Project 5", description:"Project 5", },
+    {name: "The North", description:"Project 1", },
+    {name: "The Riverlands", description:"Project 2", },
+    {name: "The Westerlands", description:"Project 3", },
+    {name: "The Reach", description:"Project 4", },
+    {name: "Dorne", description:"Project 5", },
   ]})
 
   Promise.all([users, projects])

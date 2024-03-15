@@ -14,6 +14,7 @@ class BugModel {
         user: {
           select: {
             name: true,
+            surname: true
           },
         },
         project: {
@@ -54,6 +55,7 @@ class BugModel {
         user: {
           select: {
             name: true,
+            surname: true
           },
         },
         project: {

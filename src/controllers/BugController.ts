@@ -24,7 +24,7 @@ class BugController {
       const bug = await this.bugModel.create(bugValidate);
       const newBug = {
         ...bug,
-        username: bug.user.name,
+        username: `${bug.user.name} ${bug.user.surname}`,
         project: bug.project.name,
       } as any;
       delete newBug.user;
@@ -75,7 +75,7 @@ class BugController {
       bugs = bugs.map((bug) => {
         const newBug = {
           ...bug,
-          username: bug.user.name,
+          username: `${bug.user.name} ${bug.user.surname}`,
           project: bug.project.name,
         } as any;
         delete newBug.user;
