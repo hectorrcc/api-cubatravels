@@ -1,0 +1,33 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id      Int    @id @default(autoincrement())
+  name    String
+  surname String
+  bugs Bug[]
+}
+
+model Project {
+  id          Int    @id @default(autoincrement())
+  name        String
+  description String
+  bugs        Bug[]
+}
+
+model Bug {
+  id          Int     @id @default(autoincrement())
+  description String
+  userId      Int
+  projectId   Int
+  user        User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  project     Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  creationDate DateTime @default(now())
+}
