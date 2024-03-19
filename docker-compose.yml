@@ -1,27 +1,7 @@
 version: "3.9"
 
 services:
-
-  
-  api:
-    container_name: api-googleDoc-dev
-    restart: unless-stopped
-    depends_on:
-      - db
-    env_file: .env
-    build:
-      target: dev
-      context: .
-      args:
-        - PORT=${PORT}
-    ports:
-      - "${PORT}:${PORT}"
-    links:
-      - db
-    volumes:
-      - .:/project
-      - node_modules:/project/node_modules/
-
+    
   db:
     container_name: postgres-db
     image: postgres

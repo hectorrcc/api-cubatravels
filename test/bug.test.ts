@@ -2,7 +2,7 @@ import { app } from "../src/app";
 import request from "supertest";
 
 describe("/", () => {
-  it("should response whit a 200 status code", async () => {
+  it("Crete new bug", async () => {
     const response = await request(app).post("/api/bugs").send({
       userId: 1,
       projectId: 1,
@@ -13,14 +13,13 @@ describe("/", () => {
     expect(response.body.message).toEqual("ok");
   });
 
-  it("should response whit a 200 status code", async () => {
+  it("Get Bugs", async () => {
     const response = await request(app).get("/api/bugs").query({
-      user_id: 1,
-      project_id: 1,
+      "start_date": "1900-01-01"
     });
 
     expect(response.status).toEqual(200);
     expect(response.body.message).toEqual("ok");
-    expect(response.body.bugs.userId).toBe(true)
+    expect(response.body.bugs).toBeInstanceOf(Array)
   });
 });
